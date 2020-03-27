@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import socketIOClient from "socket.io-client"
+import io from "socket.io-client"
 import logo from './logo.svg'
 import './App.css'
 
@@ -8,14 +8,12 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      temperature: "Loading...",
-      endpoint: `http://127.0.0.1:${process.env.PORT || 8080}`
+      temperature: "Loading..."
     }
   }
 
   componentDidMount() {
-    console.log(this.state.endpoint)
-    const socket = socketIOClient(this.state.endpoint)
+    const socket = io.connect()
     socket.on("temperature", (temperature) => this.setState({
       temperature: temperature
     }))
