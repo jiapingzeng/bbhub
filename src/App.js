@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import io from "socket.io-client"
 import logo from './logo.svg'
 import './App.css'
 
@@ -13,10 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const socket = io.connect()
-    socket.on("temperature", (temperature) => this.setState({
-      temperature: temperature
-    }))
+    window.alert("started")
   }
 
   render() {
